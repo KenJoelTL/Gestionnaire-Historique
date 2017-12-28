@@ -8,33 +8,32 @@ namespace model;
  * @author Joel
  */
 class Espace {
-    private $idEspace;
+    private $id;
     private $titre;
     private $idCompte;
     
-    function getIdEspace() {
-        return $this->idEspace;
+    public function getId() {
+        return $this->id;
     }
 
-    function getTitre() {
+    public function getTitre() {
         return $this->titre;
     }
 
-    function getIdCompte() {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
-    function setIdEspace($idEspace) {
-        $this->idEspace = $idEspace;
+    public function setId($idEspace) {
+        $this->id = $idEspace;
     }
 
-    function setTitre($titre) {
+    public function setTitre($titre) {
         $this->titre = $titre;
     }
 
-    function setIdCompte($idCompte) {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
     }
-
 
 }
