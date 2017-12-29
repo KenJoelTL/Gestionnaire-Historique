@@ -18,10 +18,6 @@ use model\Compte;
     </head>
     <body>
         <?php
-        // put your code here
-         /*
-        include_once('/model/Liste.class.php'); 
-        */
         
         $cnx = Connexion::getInstance();
         $compteDao = new CompteDAO();
