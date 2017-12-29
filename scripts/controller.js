@@ -7,7 +7,9 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope,$http){
     $scope.test = function(){
         console.log('Function test');
         $http.get('controleur-frontal.php').then(function(response){
-            $scope.message = response.data;
+            //$scope.message = response.data;
+            $scope.compte = response.data;
+            console.log(response.data);
             console.log("revoie de la reponse");
         });
     };
