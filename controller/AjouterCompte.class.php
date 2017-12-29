@@ -1,7 +1,7 @@
 <?php
 
 namespace action;
-
+require_once '/controller/Action.interface.php';
 /**
  * Description of AjouterCompte
  *

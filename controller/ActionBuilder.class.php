@@ -1,6 +1,7 @@
 <?php
 
 namespace action;
+require_once("/controller/AjouterCompte.class.php");
 
 /**
  * Description of ActionBuilder
