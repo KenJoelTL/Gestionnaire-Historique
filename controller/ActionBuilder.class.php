@@ -2,6 +2,7 @@
 
 namespace action;
 require_once("/controller/AjouterCompte.class.php");
+require_once("/controller/ObtenirListeCompte.class.php");
 
 /**
  * Description of ActionBuilder
@@ -16,7 +17,10 @@ class ActionBuilder {
                 break; */
             case "ajoutCompte" :
                 return new AjouterCompte();
-                break; /*
+                break;
+            case "listeCompte" :
+                return new ObtenirListeCompte();
+                break;/*
             case "modificationCompte" :
                 return new UpdateCompte();
                 break; */

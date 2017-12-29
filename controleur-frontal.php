@@ -11,5 +11,6 @@ else {
     echo "[]";
 }*/
 
-$nomAction = "ajoutCompte";
+//$nomAction = "ajoutCompte";
+$nomAction = "listeCompte";
 ActionBuilder::getAction($nomAction)->execute();

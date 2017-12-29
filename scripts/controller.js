@@ -13,6 +13,14 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope,$http){
             console.log("revoie de la reponse");
         });
     };
+
+    $scope.afficherComptes = function(){
+        console.log("fonction pour afficher les comptes");
+        $http.get('controleur-frontal.php').then(function(response){
+            $scope.comptes = response.data;
+            console.log(response.data);
+        });
+    };
 /*
   //fonction pour reinitialiser le contact sélectionné
   $scope.deselectionnerContact = function(){
