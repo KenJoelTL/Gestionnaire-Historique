@@ -6,21 +6,35 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope,$http){
 
     $scope.test = function(){
         console.log('Function test');
-        $http.get('controleur-frontal.php').then(function(response){
-            //$scope.message = response.data;
+        $http.get('controleur-frontal-services.php').then(function(response){
             $scope.compte = response.data;
             console.log(response.data);
-            console.log("revoie de la reponse");
         });
     };
 
     $scope.afficherComptes = function(){
         console.log("fonction pour afficher les comptes");
-        $http.get('controleur-frontal.php').then(function(response){
+        $http.get('controleur-frontal-services.php', { params : { action:"listeCompte" } }).
+            then(function(response){
+                $scope.comptes = response.data;
+                console.log(response.data);
+            });
+    };
+
+    /*
+    $scope.afficherComptes = function(){
+        console.log("fonction pour afficher les comptes");
+        $http({
+            method:'GET',
+            url : 'controleur-frontal-services.php',
+            params:{
+                action:"listeCompte"
+            }
+        }).then(function(response){
             $scope.comptes = response.data;
             console.log(response.data);
         });
-    };
+    };*/
 /*
   //fonction pour reinitialiser le contact sélectionné
   $scope.deselectionnerContact = function(){
@@ -49,15 +63,22 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope,$http){
       rafraichir();
     });
   };
-
+*/
   //fonction pour supprimer un contact de la bd
-  $scope.supprimerContact = function(id){
+  $scope.supprimerCompte = function(id_compte){
     //console.log(id);
-    $http.delete('/contactlist/'+id).then(function(response){
-        rafraichir();
-    });
+    $http.post(
+        'controleur-frontal-services.php',
+        {
+            action: "suppressionCompte", id : id_compte }
+        ).
+        then(function(response){
+            console.log("Suppression");
+            console.log(response.data);
+            $scope.afficherComptes();
+        });
   };
-
+/*
   //fonction pour chercher un contact de la bd et le selectionner(mettre dans le formulaire)
   $scope.chercherContact = function(id){
     //console.log(id);

@@ -21,11 +21,13 @@
                   <th>Id</th>
                   <th>Courriel</th>
                   <th>Mot de passe</th>
+                  <th></th>
                </tr>
                <tr ng-repeat="compte in comptes">
                   <td>{{compte.id}}</td>
                   <td>{{compte.courriel}}</td>
                   <td>{{compte.motPasse}}</td>
+                  <td><button class="btn btn-danger" ng-click="supprimerCompte(compte.id)">Suppression</button></td>
                </tr>
             </table>
 
