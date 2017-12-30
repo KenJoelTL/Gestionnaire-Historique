@@ -1,8 +1,8 @@
 <?php
 
-namespace action;
+namespace action;/*
 $postdata = file_get_contents("php://input");
-$request = json_decode($postdata);
+$request = json_decode($postdata);*/
 require_once('/controller/Action.interface.php');
 require_once('/controller/RequestAware.interface.php');
 require_once('/model/DAO/Connexion.class.php');

@@ -15,13 +15,20 @@
              <span>{{ message }}</span>
             <div class="container" ng-model>{{ compte.id }}</div>
              -->
-             <button class="btn btn-primary" ng-click="afficherComptes()"></button>
+            <button class="btn btn-primary" ng-click="afficherComptes()">Lister les compte</button>
             <table class="table">
                <tr>
                   <th>Id</th>
                   <th>Courriel</th>
                   <th>Mot de passe</th>
-                  <th></th>
+                  <th>Action</th>
+               </tr>
+
+               <tr>
+                  <th>--- ---</th>
+                  <td><input type="text" class="form-control" ng-model="compte.courriel"></td>
+                  <td><input type="password" class="form-control" ng-model="compte.motPasse"></td>
+                  <td><button class="btn btn-success" ng-click="ajouterCompte()">Ajouter</button></td>
                </tr>
                <tr ng-repeat="compte in comptes">
                   <td>{{compte.id}}</td>

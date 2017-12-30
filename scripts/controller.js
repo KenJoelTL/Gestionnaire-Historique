@@ -35,6 +35,7 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope,$http){
             console.log(response.data);
         });
     };*/
+
 /*
   //fonction pour reinitialiser le contact sélectionné
   $scope.deselectionnerContact = function(){
@@ -54,19 +55,19 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope,$http){
   };
 
   rafraichir(); // la fonction sera appelée lors du démmarage de l'app
-
+*/
   //fonction pour ajouter un contact à la base de données
-  $scope.ajouterContact = function(){
-    //console.log($scope.contact); //contact à ajouter à la bd
-    $http.post('/contactlist', $scope.contact).then(function(response){
-      //console.log(response.data); //contact ajouté à la bd
-      rafraichir();
+  $scope.ajouterCompte = function(){
+    console.log($scope.compte); //contact à ajouter à la bd
+    $http.post('controleur-frontal-services.php', {action: "ajoutCompte", compte : $scope.compte}).then(function(response){
+      console.log(response.data); //contact ajouté à la bd
+      $scope.afficherComptes();
+      //rafraichir();
     });
   };
-*/
+
   //fonction pour supprimer un contact de la bd
   $scope.supprimerCompte = function(id_compte){
-    //console.log(id);
     $http.post(
         'controleur-frontal-services.php',
         {

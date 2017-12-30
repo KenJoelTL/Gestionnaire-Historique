@@ -74,9 +74,15 @@ class Compte {
     }
 
     public function loadFromJsonObject($x){
-        $this->setId($x->id);
-        $this->setCourriel($x->courriel);
-        $this->setMotPasse($x->motPasse);
+        if(isset($x->id)){
+            $this->setId($x->id);
+        }
+        if(isset($x->courriel)){
+            $this->setCourriel($x->courriel);
+        }
+        if(isset($x->courriel)){
+            $this->setMotPasse($x->motPasse);
+        }
 //        $this->nom = $x->NOM;
   //      $this->prenom = $x->PRENOM;
     }
