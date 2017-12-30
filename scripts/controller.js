@@ -17,7 +17,7 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope,$http){
         $http.get('controleur-frontal-services.php', { params : { action:"listeCompte" } }).
             then(function(response){
                 $scope.comptes = response.data;
-                console.log(response.data);
+                //console.log(response.data);
             });
     };
 
@@ -36,33 +36,29 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope,$http){
         });
     };*/
 
-/*
+
   //fonction pour reinitialiser le contact sélectionné
   $scope.deselectionnerContact = function(){
-    $scope.contact = null;
+    $scope.compte = null;
   };
 
   var deselectionnerContact = $scope.deselectionnerContact;
 
   //fonction pour rafraichir la page.
   var rafraichir = function(){
-    //action lorsque requete get /contactlist
-    $http.get('/contactlist').then(function(response){
-      //console.log("J'ai reçu les données que j'ai demandées");
-      $scope.listeContacts = response.data;
+      $scope.afficherComptes();
       deselectionnerContact();
-    });
   };
 
   rafraichir(); // la fonction sera appelée lors du démmarage de l'app
-*/
+
   //fonction pour ajouter un contact à la base de données
   $scope.ajouterCompte = function(){
     console.log($scope.compte); //contact à ajouter à la bd
     $http.post('controleur-frontal-services.php', {action: "ajoutCompte", compte : $scope.compte}).then(function(response){
       console.log(response.data); //contact ajouté à la bd
-      $scope.afficherComptes();
-      //rafraichir();
+      //$scope.afficherComptes();
+      rafraichir();
     });
   };
 
@@ -76,6 +72,7 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope,$http){
         then(function(response){
             console.log("Suppression");
             console.log(response.data);
+        //    rafraichir();
             $scope.afficherComptes();
         });
   };

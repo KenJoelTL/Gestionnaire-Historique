@@ -1,9 +1,12 @@
 <?php
 
 namespace action;
-require_once("/controller/AjouterCompte.class.php");
-require_once("/controller/ObtenirListeCompte.class.php");
-require_once("/controller/SupprimerCompte.class.php");
+//Les services de Compte
+require_once("/controller/compte/AjouterCompte.class.php");
+require_once("/controller/compte/ObtenirListeCompte.class.php");
+require_once("/controller/compte/SupprimerCompte.class.php");
+
+//Espace
 
 /**
  * Description of ActionBuilder
