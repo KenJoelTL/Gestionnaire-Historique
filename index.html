@@ -29,7 +29,9 @@
                   <td><input type="text" class="form-control" ng-model="compte.courriel"></td>
                   <td><input type="password" class="form-control" ng-model="compte.motPasse"></td>
                   <td><button class="btn btn-success" ng-click="ajouterCompte()">Ajouter</button></td>
+                  <td><button class="btn btn-primary" ng-click="modifierCompte()">Modifier</button></td>
                </tr>
+               
                <tr ng-repeat="compte in comptes">
                   <td>{{compte.id}}</td>
                   <td>{{compte.courriel}}</td>

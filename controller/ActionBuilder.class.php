@@ -6,6 +6,7 @@ require_once("/controller/compte/AjouterCompte.class.php");
 require_once("/controller/compte/ObtenirListeCompte.class.php");
 require_once("/controller/compte/ObtenirCompte.class.php");
 require_once("/controller/compte/SupprimerCompte.class.php");
+require_once("/controller/compte/ModifierCompte.class.php");
 
 //Espace
 
@@ -32,10 +33,9 @@ class ActionBuilder {
             case "rechercheCompte" :
                 return new ObtenirCompte();
                 break;
-            /*
             case "modificationCompte" :
-                return new UpdateCompte();
-                break; */
+                return new ModifierCompte();
+                break;
             default :
                 return new ObtenirListeCompte();
         }

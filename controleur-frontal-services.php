@@ -1,6 +1,6 @@
 <?php
-//permet d'accéder aux api qui fournissent les données
-//header("Access-Control-Allow-Origin: *");
+//permet d'accéder à la requête
+header("Access-Control-Allow-Origin: *");
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 include_once("/controller/ActionBuilder.class.php");
@@ -26,5 +26,5 @@ if(isset($request->action) || isset($_GET["action"])){
     $action->execute();
 }
 else {
-    echo '[{"error" : "'.$request.'"}]';
+    echo '[]';
 }

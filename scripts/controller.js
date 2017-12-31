@@ -80,41 +80,32 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope,$http){
   //fonction pour chercher un contact de la bd et le selectionner(mettre dans le formulaire)
   $scope.chercherCompte = function(id_compte){
     console.log(id_compte);
-    //deselectionnerContact();
+    deselectionnerContact();
 
-    $http.get('controleur-frontal-services.php', { params : { action:"rechercheCompte", id:id_compte } }).
+    $http.get('controleur-frontal-services.php',
+        { params : { action:"rechercheCompte", id:id_compte } }).
         then(function(response){
             $scope.compte = response.data;
             console.log(response.data);
         });
   };
-/*
-  $scope.chercherCompte = function(id_compte){
-      console.log("fonction pour chercher un compte");
-      $http({
-          method:'GET',
-          url : 'controleur-frontal-services.php',
-          params:{
-              action:"rechercheCompte",
-              id : id_compte
-          }
-      }).then(function(response){
-          $scope.comptes = response.data;
-          console.log(response.data);
-      });
-  };
-*/
 
-
-/*
   //fonction pour modifier le contact sélectionné (dans le formulaire)
-  $scope.modifierContact = function(){
-    //console.log($scope.contact._id);
-    $http.put('/contactlist/'+$scope.contact._id, $scope.contact).then( function(response){
-        //console.log(response.data);
-        rafraichir();
-    });
+  $scope.modifierCompte = function(){
+    console.log("Modification");
+    console.log($scope.compte.id);
+
+    $http.put('controleur-frontal-services.php',
+        {   action: 'modificationCompte',
+            id: $scope.compte.id,
+            compte : $scope.compte
+        }).
+        then(function(response){
+            console.log(response.data);
+            rafraichir();
+        });
+
   };
-*/
+
 
 }]);
