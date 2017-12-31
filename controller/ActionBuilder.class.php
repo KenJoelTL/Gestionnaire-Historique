@@ -8,7 +8,8 @@ require_once("/controller/compte/ObtenirCompte.class.php");
 require_once("/controller/compte/SupprimerCompte.class.php");
 require_once("/controller/compte/ModifierCompte.class.php");
 
-//Espace
+//Les services d' Espace
+require_once("/controller/espace/ObtenirListeEspace.class.php");
 
 /**
  * Description of ActionBuilder
@@ -21,6 +22,7 @@ class ActionBuilder {
             case "test" :
                 return new PageTest();
                 break; */
+        // Compte
             case "ajoutCompte" :
                 return new AjouterCompte();
                 break;
@@ -35,6 +37,10 @@ class ActionBuilder {
                 break;
             case "modificationCompte" :
                 return new ModifierCompte();
+                break;
+        // Espace
+            case "listeEspace" :
+                return new ObtenirListeEspace();
                 break;
             default :
                 return new ObtenirListeCompte();

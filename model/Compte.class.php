@@ -80,7 +80,7 @@ class Compte {
         if(isset($x->courriel)){
             $this->setCourriel($x->courriel);
         }
-        if(isset($x->courriel)){
+        if(isset($x->motPasse)){
             $this->setMotPasse($x->motPasse);
         }
 //        $this->nom = $x->NOM;
