@@ -7,11 +7,11 @@ require_once '/model/DAO/CompteDAO.class.php';
 use model\Compte;
 use model\dao\compte\CompteDAO;
 /**
- * Description of AjouterCompte
+ * Description of Test
  *
  * @author Joel
  */
-class AjouterCompte implements Action{
+class Test implements Action{
 
     public function execute() {
         //echo"{ truc : Ajout réussie !}";
