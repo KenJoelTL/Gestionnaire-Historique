@@ -87,5 +87,17 @@ class Compte {
   //      $this->prenom = $x->PRENOM;
     }
 
+    public function toJson(){
+        $compteJSON =
+            '{ '.
+                '"id":"'.$this->getId().'",'.
+                '"courriel":"'.$this->getCourriel().'",'.
+                '"motPasse":"'.$this->getMotPasse().'"'.
+            ' }';
+
+        return $compteJSON;
+    }
+
+
 
 }

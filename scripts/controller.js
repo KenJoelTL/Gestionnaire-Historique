@@ -76,16 +76,37 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope,$http){
             $scope.afficherComptes();
         });
   };
-/*
-  //fonction pour chercher un contact de la bd et le selectionner(mettre dans le formulaire)
-  $scope.chercherContact = function(id){
-    //console.log(id);
-    deselectionnerContact();
-    $http.get('/contactlist/'+id).then(function(response){
-        $scope.contact = response.data;
-    });
-  };
 
+  //fonction pour chercher un contact de la bd et le selectionner(mettre dans le formulaire)
+  $scope.chercherCompte = function(id_compte){
+    console.log(id_compte);
+    //deselectionnerContact();
+
+    $http.get('controleur-frontal-services.php', { params : { action:"rechercheCompte", id:id_compte } }).
+        then(function(response){
+            $scope.compte = response.data;
+            console.log(response.data);
+        });
+  };
+/*
+  $scope.chercherCompte = function(id_compte){
+      console.log("fonction pour chercher un compte");
+      $http({
+          method:'GET',
+          url : 'controleur-frontal-services.php',
+          params:{
+              action:"rechercheCompte",
+              id : id_compte
+          }
+      }).then(function(response){
+          $scope.comptes = response.data;
+          console.log(response.data);
+      });
+  };
+*/
+
+
+/*
   //fonction pour modifier le contact sélectionné (dans le formulaire)
   $scope.modifierContact = function(){
     //console.log($scope.contact._id);

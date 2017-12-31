@@ -14,6 +14,7 @@ if(isset($request->action) || isset($_GET["action"])){
     }
     elseif (isset($_GET["action"])) {
         $nomAction = $_GET["action"];
+        $request = $_GET;
     }
 
     $action = ActionBuilder::getAction($nomAction);

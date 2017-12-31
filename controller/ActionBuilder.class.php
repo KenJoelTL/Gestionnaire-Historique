@@ -4,6 +4,7 @@ namespace action;
 //Les services de Compte
 require_once("/controller/compte/AjouterCompte.class.php");
 require_once("/controller/compte/ObtenirListeCompte.class.php");
+require_once("/controller/compte/ObtenirCompte.class.php");
 require_once("/controller/compte/SupprimerCompte.class.php");
 
 //Espace
@@ -28,12 +29,15 @@ class ActionBuilder {
             case "suppressionCompte" :
                 return new SupprimerCompte();
                 break;
+            case "rechercheCompte" :
+                return new ObtenirCompte();
+                break;
             /*
             case "modificationCompte" :
                 return new UpdateCompte();
                 break; */
             default :
-                return new AjouterCompte();
+                return new ObtenirListeCompte();
         }
     }
 }
