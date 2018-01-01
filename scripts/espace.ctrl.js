@@ -1,6 +1,6 @@
 //Définition d'un controleur pour le module myApp
 myApp.controller('espaceCtrl', ['$scope', '$http', function($scope, $http) {
-    console.log("Coucou du controleur !");
+    console.log("Coucou du controleur Espace!");
 
     $scope.afficherEspaces = function() {
         console.log("fonction pour afficher les espaces");
@@ -10,77 +10,81 @@ myApp.controller('espaceCtrl', ['$scope', '$http', function($scope, $http) {
             }
         }).
         then(function(response) {
+            console.log(response.data);
+            //$scope.error = response.data.error;
             $scope.espaces = response.data;
         });
     };
 
-    //fonction pour reinitialiser le contact sélectionné
-    $scope.deselectionnerContact = function() {
-        $scope.compte = null;
+
+    //fonction pour reinitialiser l'espace sélectionné
+    $scope.deselectionnerEspace = function() {
+        $scope.espace = null;
     };
 
-    var deselectionnerContact = $scope.deselectionnerContact;
+    var deselectionnerEspace = $scope.deselectionnerEspace;
 
     //fonction pour rafraichir la page.
     var rafraichir = function() {
-        $scope.afficherComptes();
-        deselectionnerContact();
+        $scope.afficherEspaces();
+        deselectionnerEspace();
     };
 
     rafraichir(); // la fonction sera appelée lors du démmarage de l'app
 
-    //fonction pour ajouter un contact à la base de données
-    $scope.ajouterCompte = function() {
-        console.log($scope.compte); //contact à ajouter à la bd
+    //fonction pour ajouter un espace à la base de données
+    $scope.ajouterEspace = function() {
+        console.log($scope.espace); //espace à ajouter à la bd
         $http.post('controleur-frontal-services.php', {
-            action: "ajoutCompte",
-            compte: $scope.compte
+            action: "ajoutEspace",
+            espace: $scope.espace
         }).then(function(response) {
-            console.log(response.data); //contact ajouté à la bd
+            console.log(response.data); //espace ajouté à la bd
             rafraichir();
         });
     };
 
-    //fonction pour supprimer un contact de la bd
-    $scope.supprimerCompte = function(id_compte) {
+    //fonction pour supprimer un espace de la bd
+    $scope.supprimerEspace = function(id_espace) {
         $http.post('controleur-frontal-services.php', {
-            action: "suppressionCompte",
-            id: id_compte
+            action: "suppressionEspace",
+            id: id_espace
         }).
         then(function(response) {
-            console.log("Suppression");
+            console.log("Suppression d'espace");
             console.log(response.data);
             //    rafraichir();
-            $scope.afficherComptes();
+            $scope.afficherEspaces();
         });
     };
 
-    //fonction pour chercher un contact de la bd et le selectionner(mettre dans le formulaire)
-    $scope.chercherCompte = function(id_compte) {
-        console.log(id_compte);
-        deselectionnerContact();
+
+    //fonction pour chercher un espace de la bd et le selectionner(mettre dans le formulaire)
+    $scope.chercherEspace = function(id_espace) {
+        console.log(id_espace);
+        deselectionnerEspace();
 
         $http.get('controleur-frontal-services.php', {
             params: {
-                action: "rechercheCompte",
-                id: id_compte
+                action: "rechercheEspace",
+                id: id_espace
             }
         }).
         then(function(response) {
-            $scope.compte = response.data;
+            $scope.espace = response.data;
             console.log(response.data);
         });
     };
 
-    //fonction pour modifier le contact sélectionné (dans le formulaire)
-    $scope.modifierCompte = function() {
+    //fonction pour modifier l'espace sélectionné (dans le formulaire)
+    $scope.modifierEspace = function() {
         console.log("Modification");
-        console.log($scope.compte.id);
+        console.log($scope.espace.id);
 
         $http.put('controleur-frontal-services.php', {
-            action: 'modificationCompte',
-            id: $scope.compte.id,
-            compte: $scope.compte
+            action: 'modificationEspace',
+            id: $scope.espace.id,
+            espace: $scope.espace
         }).
         then(function(response) {
             console.log(response.data);

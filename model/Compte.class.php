@@ -90,7 +90,7 @@ class Compte {
     public function toJson(){
         $compteJSON =
             '{ '.
-                '"id":"'.$this->getId().'",'.
+                '"id": '.$this->getId().' ,'.
                 '"courriel":"'.$this->getCourriel().'",'.
                 '"motPasse":"'.$this->getMotPasse().'"'.
             ' }';

@@ -43,13 +43,13 @@ class EspaceDAO extends DAO {
             $idCompte = $espace->getIdCompte();
             $id = $espace->getId();
 
-            $pstmt->bindParam(':titre', $courriel);
-            $pstmt->bindParam(':idCompte', $motPasse);
+            $pstmt->bindParam(':titre', $titre);
+            $pstmt->bindParam(':idCompte', $idCompte);
             $pstmt->bindParam(':id', $id);
 
             return $pstmt->execute();
         }
-        catch(PDOException $e){
+        catch(PDOException $e) {
             throw $e;
         }
     }
@@ -75,11 +75,11 @@ class EspaceDAO extends DAO {
         $espace = null;
         $resultat = $pstmt->fetch(PDO::FETCH_OBJ);
         if ($resultat) {
-            $espace = new Compte();
+            $espace = new Espace();
             $espace->loadFromObject($resultat);
         }
         $pstmt->closeCursor();
-        return $c;
+        return $espace;
     }
 
     public function findAll() {
@@ -122,7 +122,8 @@ class EspaceDAO extends DAO {
 
     }
 
-    /*public function findByCourriel($courriel) {
+    /*
+    public function findByCourriel($courriel) {
         $request = "SELECT * FROM espace WHERE COURRIEL = :x";
         $pstmt = $this->cnx->prepare($request);//requête paramétrée par un paramètre x.
         $pstmt->execute(array(':x' => $courriel));

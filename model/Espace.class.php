@@ -36,6 +36,12 @@ class Espace {
         $this->idCompte = $idCompte;
     }
 
+    public function loadFromArray($ligne){
+        $this->setId($ligne['ID']);
+        $this->setTitre($ligne['TITRE']);
+        $this->setIdCompte($ligne['ID_COMPTE']);
+    }
+
     public function loadFromObject($x){
         $this->id = $x->ID;
         $this->titre = $x->TITRE;
@@ -57,9 +63,9 @@ class Espace {
     public function toJson(){
         $compteJSON =
             '{ '.
-                '"id":"'.$this->getId().'",'.
+                '"id": '.$this->getId().' ,'.
                 '"titre":"'.$this->getTitre().'",'.
-                '"idCompte":"'.$this->getIdCompte().'"'.
+                '"idCompte": '.$this->getIdCompte().''.
             ' }';
 
         return $compteJSON;
