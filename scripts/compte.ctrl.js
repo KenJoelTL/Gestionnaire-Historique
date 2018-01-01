@@ -1,16 +1,6 @@
-//var myApp = angular.module('myApp', []);
-
 //Définition d'un controleur pour le module myApp
-myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
-    console.log("Coucou du controleur !");
-
-    $scope.test = function() {
-        console.log('Function test');
-        $http.get('controleur-frontal-services.php').then(function(response) {
-            $scope.compte = response.data;
-            console.log(response.data);
-        });
-    };
+myApp.controller('compteCtrl', ['$scope', '$http', function($scope, $http) {
+    console.log("Coucou du controleur Compte!");
 
     $scope.afficherComptes = function() {
         console.log("fonction pour afficher les comptes");

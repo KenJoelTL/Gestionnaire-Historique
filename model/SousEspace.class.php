@@ -3,14 +3,14 @@
 namespace model;
 
 /**
- * Description of Espace
+ * Description of SousEspace
  *
  * @author Joel
  */
 class Espace {
     private $id;
     private $titre;
-    private $idCompte;
+    private $idEspace;
 
     public function getId() {
         return $this->id;
@@ -20,32 +20,32 @@ class Espace {
         return $this->titre;
     }
 
-    public function getIdCompte() {
-        return $this->idCompte;
+    public function getIdEspace() {
+        return $this->idEspace;
     }
 
-    public function setId($idEspace) {
-        $this->id = $idEspace;
+    public function setId($idSousEspace) {
+        $this->id = $idSousEspace;
     }
 
     public function setTitre($titre) {
         $this->titre = $titre;
     }
 
-    public function setIdCompte($idCompte) {
-        $this->idCompte = $idCompte;
+    public function setIdEspace($idEspace) {
+        $this->idEspace = $idEspace;
     }
 
     public function loadFromArray($ligne){
         $this->setId($ligne['ID']);
         $this->setTitre($ligne['TITRE']);
-        $this->setIdCompte($ligne['ID_COMPTE']);
+        $this->setIdEspace($ligne['ID_ESPACE']);
     }
 
     public function loadFromObject($x){
         $this->id = $x->ID;
         $this->titre = $x->TITRE;
-        $this->idCompte = $x->ID_COMPTE;
+        $this->idEspace = $x->ID_ESPACE;
     }
 
     public function loadFromJsonObject($x){
@@ -55,20 +55,20 @@ class Espace {
         if(isset($x->titre)){
             $this->setTitre($x->titre);
         }
-        if(isset($x->idCompte)){
-            $this->setIdCompte($x->idCompte);
+        if(isset($x->idEspace)){
+            $this->setIdEspace($x->idEspace);
         }
     }
 
     public function toJson(){
-        $espaceJSON =
+        $sousEspaceJSON =
             '{ '.
                 '"id": '.$this->getId().' ,'.
                 '"titre":"'.$this->getTitre().'",'.
-                '"idCompte": '.$this->getIdCompte().''.
+                '"idEspace": '.$this->getIdEspace().''.
             ' }';
 
-        return $espaceJSON;
+        return $sousEspaceJSON;
     }
 
 }

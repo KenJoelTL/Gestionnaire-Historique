@@ -15,6 +15,9 @@ require_once("/controller/espace/ObtenirEspace.class.php");
 require_once("/controller/espace/SupprimerEspace.class.php");
 require_once("/controller/espace/ModifierEspace.class.php");
 
+//Les services de SousEspace
+
+
 /**
  * Description of ActionBuilder
  *
@@ -46,7 +49,7 @@ class ActionBuilder {
         // Espace
             case "ajoutEspace" :
                 return new AjouterEspace();
-            break;
+                break;
             case "listeEspace" :
                 return new ObtenirListeEspace();
                 break;
