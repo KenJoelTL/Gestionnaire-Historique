@@ -80,7 +80,7 @@ class Compte {
         if(isset($x->courriel)){
             $this->setCourriel($x->courriel);
         }
-        if(isset($x->courriel)){
+        if(isset($x->motPasse)){
             $this->setMotPasse($x->motPasse);
         }
 //        $this->nom = $x->NOM;
@@ -90,7 +90,7 @@ class Compte {
     public function toJson(){
         $compteJSON =
             '{ '.
-                '"id":"'.$this->getId().'",'.
+                '"id": '.$this->getId().' ,'.
                 '"courriel":"'.$this->getCourriel().'",'.
                 '"motPasse":"'.$this->getMotPasse().'"'.
             ' }';

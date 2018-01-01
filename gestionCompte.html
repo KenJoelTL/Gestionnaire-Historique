@@ -8,15 +8,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     </head>
     <body>
-        <div ng-controller="espaceCtrl" class="container">
+        <div class="container" ng-controller="compteCtrl">
             <h1>Historique</h1>
-
-            <div class="col-lg-3">
-               <ul ng-repeat="espace in espaces">
-                  <li>{{espace.titre}}</li>
-               </ul>
-            </div>
-         <!--
             <button class="btn btn-primary" ng-click="afficherComptes()">Lister les compte</button>
             <table class="table">
                <tr>
@@ -24,10 +17,11 @@
                   <th>Courriel</th>
                   <th>Mot de passe</th>
                   <th>Action</th>
+                  <th>&nbsp;</th>
                </tr>
 
                <tr>
-                  <th>--- ---</th>
+                  <th>---&nbsp;---</th>
                   <td><input type="text" class="form-control" ng-model="compte.courriel"></td>
                   <td><input type="password" class="form-control" ng-model="compte.motPasse"></td>
                   <td><button class="btn btn-success" ng-click="ajouterCompte()">Ajouter</button></td>
@@ -42,12 +36,12 @@
                   <td><button class="btn btn-warning" ng-click="chercherCompte(compte.id)">Modification</button></td>
                </tr>
             </table>
-         -->
+
         </div>
-         <!-- =============== Scripts =============== -->
+
+        <!-- =============== Scripts =============== -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
         <script src="scripts/myApp.mdl.js"></script>
         <script src="scripts/compte.ctrl.js"></script>
-        <script src="scripts/espace.ctrl.js"></script>
     </body>
 </html>
