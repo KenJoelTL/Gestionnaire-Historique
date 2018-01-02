@@ -49,7 +49,7 @@ myApp.controller('compteCtrl', ['$scope', '$http', function($scope, $http) {
     //fonction pour ajouter un contact à la base de données
     $scope.ajouterCompte = function() {
         console.log($scope.compte); //contact à ajouter à la bd
-        $http.post('controleur-frontal-services.php', {
+        $http.post('../controleur-frontal-services.php', {
             action: "ajoutCompte",
             compte: $scope.compte
         }).then(function(response) {
@@ -61,7 +61,7 @@ myApp.controller('compteCtrl', ['$scope', '$http', function($scope, $http) {
 
     //fonction pour supprimer un contact de la bd
     $scope.supprimerCompte = function(id_compte) {
-        $http.post('controleur-frontal-services.php', {
+        $http.post('../controleur-frontal-services.php', {
             action: "suppressionCompte",
             id: id_compte
         }).
@@ -78,7 +78,7 @@ myApp.controller('compteCtrl', ['$scope', '$http', function($scope, $http) {
         console.log(id_compte);
         deselectionnerContact();
 
-        $http.get('controleur-frontal-services.php', {
+        $http.get('../controleur-frontal-services.php', {
             params: {
                 action: "rechercheCompte",
                 id: id_compte
@@ -95,7 +95,7 @@ myApp.controller('compteCtrl', ['$scope', '$http', function($scope, $http) {
         console.log("Modification");
         console.log($scope.compte.id);
 
-        $http.put('controleur-frontal-services.php', {
+        $http.put('../controleur-frontal-services.php', {
             action: 'modificationCompte',
             id: $scope.compte.id,
             compte: $scope.compte

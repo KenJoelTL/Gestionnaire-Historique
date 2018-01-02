@@ -4,7 +4,6 @@ namespace model\dao;
 include_once('/model/DAO/DAO.class.php');
 use model\Liste;
 use model\SousEspace;
-use model\SousEspace;
 use \PDO;
 use model\dao\Connexion;
 
@@ -101,7 +100,7 @@ class SousEspaceDAO extends DAO {
     }
 
     //Fonction qui retourne la liste des espaces d'un utilisateur à l'aide de son $idEspace
-    public function findByIdCompte($idEspace) {
+    public function findByIdEspace($idEspace) {
 
         $liste = new Liste();
         $request = "SELECT * FROM sous_espace WHERE ID_ESPACE = :x";
@@ -114,8 +113,15 @@ class SousEspaceDAO extends DAO {
 				$sousEspace->loadFromObject($resultat);
                 $liste->add($sousEspace);
 		    }
-            $resultat->closeCursor();
-            //$pstmt->closeCursor();
+/*
+            foreach($pstmt as $ligne) {
+                $sousEspace = new SousEspace();
+                $sousEspace->loadFromArray($ligne);
+                $liste->add($sousEspace);
+            }*/
+
+            //$resultat->closeCursor();
+            $pstmt->closeCursor();
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
         }
