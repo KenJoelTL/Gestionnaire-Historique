@@ -7,7 +7,7 @@ namespace model;
  *
  * @author Joel
  */
-class Espace {
+class SousEspace {
     private $id;
     private $titre;
     private $idEspace;

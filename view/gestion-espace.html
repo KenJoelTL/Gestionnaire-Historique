@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>Gestionnaire historique</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+        <div class="container" ng-controller="espaceCtrl">
+            <h1>Historique</h1>
+            <button class="btn btn-primary" ng-click="afficherEspaces()">Liste des espaces</button>
+            <table class="table">
+               <tr>
+                  <th>Id</th>
+                  <th>Titre</th>
+                  <th>Id Compte propri&eacute;taire</th>
+                  <th>Action</th>
+                  <th>&nbsp;</th>
+               </tr>
+
+               <tr>
+                  <th>---&nbsp;---</th>
+                  <td><input type="text" class="form-control" ng-model="espace.titre"></td>
+                  <td><input type="number" class="form-control" ng-model="espace.idCompte"></td>
+                  <td><button class="btn btn-success" ng-click="ajouterEspace()">Ajouter</button></td>
+                  <td><button class="btn btn-primary" ng-click="modifierEspace()">Modifier</button></td>
+               </tr>
+
+               <tr ng-repeat="espace in espaces">
+                  <td>{{espace.id}}</td>
+                  <td>{{espace.titre}}</td>
+                  <td>{{espace.idCompte}}</td>
+                  <td><button class="btn btn-danger" ng-click="supprimerEspace(espace.id)">Suppression</button></td>
+                  <td><button class="btn btn-warning" ng-click="chercherEspace(espace.id)">Modification</button></td>
+               </tr>
+            </table>
+
+
+        </div>
+
+        <!-- =============== Scripts =============== -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+        <script src="../scripts/myApp.mdl.js"></script>
+        <script src="../scripts/espace.ctrl.js"></script>
+    </body>
+</html>
