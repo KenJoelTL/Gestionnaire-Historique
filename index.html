@@ -7,40 +7,40 @@
         <link rel="stylesheet" href="./lib/bootstrap-3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="./lib/bootstrap-3.3.7/css/bootstrap-theme.min.css">
     </head>
-    <body>
-        <div class="container-fluid" ng-controller="espaceCtrl">
+    <body ng-controller="espaceCtrl">
+        <div class="container-fluid" ng-controller="sousEspaceCtrl">
             <h1>Historique</h1>
 
             <div class="col-lg-2">
-               <ul class="nav nav-pills nav-stacked" ng-repeat="espace in espaces">
-                  <li><a href="#" ng-click="afficherComptes()">{{espace.titre}}</a></li>
+               <ul class="nav nav-pills nav-stacked" ng-repeat="espace in $parent.espaces">
+                  <li><a href="#" ng-click="chercherSousEspaceParEspace(espace.id)">{{espace.titre}}</a></li>
                </ul>
             </div>
 
-            <div class="col-lg-10" ng-controller="compteCtrl">
-               <button class="btn btn-primary">Lister les compte</button>
+            <div class="col-lg-8">
+               <button class="btn btn-primary">bla</button>
                <table class="table">
                   <tr>
                      <th>Id</th>
-                     <th>Courriel</th>
-                     <th>Mot de passe</th>
+                     <th>Titre</th>
+                     <th>Id de l'espace de travail</th>
                      <th>Action</th>
                   </tr>
 
                   <tr>
                      <th>--- ---</th>
-                     <td><input type="text" class="form-control" ng-model="compte.courriel"></td>
-                     <td><input type="password" class="form-control" ng-model="compte.motPasse"></td>
-                     <td><button class="btn btn-success" ng-click="ajouterCompte()">Ajouter</button>
-                     <button class="btn btn-primary" ng-click="modifierCompte()">Modifier</button></td>
+                     <td><input type="text" class="form-control" ng-model="sousEspace.titre"></td>
+                     <td><input type="number" class="form-control" ng-model="sousEspace.idEspace"></td>
+                     <td><button class="btn btn-success" ng-click="ajouterSousEspace()">Ajouter</button>
+                     <button class="btn btn-primary" ng-click="modifierSousEspace()">Modifier</button></td>
                   </tr>
 
-                  <tr ng-repeat="compte in comptes">
-                     <td>{{compte.id}}</td>
-                     <td>{{compte.courriel}}</td>
-                     <td>{{compte.motPasse}}</td>
-                     <td><button class="btn btn-danger" ng-click="supprimerCompte(compte.id)">Suppression</button>
-                     <button class="btn btn-warning" ng-click="chercherCompte(compte.id)">Modification</button></td>
+                  <tr ng-repeat="sousEspace in sousEspaces">
+                     <td>{{sousEspace.id}}</td>
+                     <td>{{sousEspace.titre}}</td>
+                     <td>{{sousEspace.idEspace}}</td>
+                     <td><button class="btn btn-danger" ng-click="supprimerSousEspace(sousEspace.id)">Supprimer</button>
+                     <button class="btn btn-warning" ng-click="chercherSousEspace(sousEspace.id)">Selectionner</button></td>
                   </tr>
                </table>
             </div>
@@ -51,5 +51,6 @@
         <script src="scripts/myApp.mdl.js"></script>
         <script src="scripts/compte.ctrl.js"></script>
         <script src="scripts/espace.ctrl.js"></script>
+        <script src="scripts/sous-espace.ctrl.js"></script>
     </body>
 </html>

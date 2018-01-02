@@ -4,7 +4,7 @@ myApp.controller('espaceCtrl', ['$scope', '$http', function($scope, $http) {
 
     $scope.afficherEspaces = function() {
         console.log("fonction pour afficher les espaces");
-        $http.get('../controleur-frontal-services.php', {
+        $http.get('controleur-frontal-services.php', {
             params: {
                 action: "listeEspace"
             }
@@ -35,7 +35,7 @@ myApp.controller('espaceCtrl', ['$scope', '$http', function($scope, $http) {
     //fonction pour ajouter un espace à la base de données
     $scope.ajouterEspace = function() {
         console.log($scope.espace); //espace à ajouter à la bd
-        $http.post('../controleur-frontal-services.php', {
+        $http.post('controleur-frontal-services.php', {
             action: "ajoutEspace",
             espace: $scope.espace
         }).then(function(response) {
@@ -46,7 +46,7 @@ myApp.controller('espaceCtrl', ['$scope', '$http', function($scope, $http) {
 
     //fonction pour supprimer un espace de la bd
     $scope.supprimerEspace = function(id_espace) {
-        $http.post('../controleur-frontal-services.php', {
+        $http.post('controleur-frontal-services.php', {
             action: "suppressionEspace",
             id: id_espace
         }).
@@ -64,7 +64,7 @@ myApp.controller('espaceCtrl', ['$scope', '$http', function($scope, $http) {
         console.log(id_espace);
         deselectionnerEspace();
 
-        $http.get('../controleur-frontal-services.php', {
+        $http.get('controleur-frontal-services.php', {
             params: {
                 action: "rechercheEspace",
                 id: id_espace
@@ -81,7 +81,7 @@ myApp.controller('espaceCtrl', ['$scope', '$http', function($scope, $http) {
         console.log("Modification");
         console.log($scope.espace.id);
 
-        $http.put('../controleur-frontal-services.php', {
+        $http.put('controleur-frontal-services.php', {
             action: 'modificationEspace',
             id: $scope.espace.id,
             espace: $scope.espace

@@ -4,7 +4,7 @@ myApp.controller('sousEspaceCtrl', ['$scope', '$http', function($scope, $http) {
 
     $scope.afficherSousEspaces = function() {
         console.log("fonction pour afficher les sous-espaces");
-        $http.get('../controleur-frontal-services.php', {
+        $http.get('controleur-frontal-services.php', {
             params: {
                 action: "listeSousEspace"
             }
@@ -35,7 +35,7 @@ myApp.controller('sousEspaceCtrl', ['$scope', '$http', function($scope, $http) {
     //fonction pour ajouter un sous-espace à la base de données
     $scope.ajouterSousEspace = function() {
         console.log($scope.sousEspace); // sous-espace à ajouter à la bd
-        $http.post('../controleur-frontal-services.php', {
+        $http.post('controleur-frontal-services.php', {
             action: "ajoutSousEspace",
             sousEspace: $scope.sousEspace
         }).then(function(response) {
@@ -46,7 +46,7 @@ myApp.controller('sousEspaceCtrl', ['$scope', '$http', function($scope, $http) {
 
     //fonction pour supprimer un espace de la bd
     $scope.supprimerSousEspace = function(id_sous_espace) {
-        $http.post('../controleur-frontal-services.php', {
+        $http.post('controleur-frontal-services.php', {
             action: "suppressionSousEspace",
             id: id_sous_espace
         }).
@@ -64,7 +64,7 @@ myApp.controller('sousEspaceCtrl', ['$scope', '$http', function($scope, $http) {
         console.log(id_sous_espace);
         deselectionnerSousEspace();
 
-        $http.get('../controleur-frontal-services.php', {
+        $http.get('controleur-frontal-services.php', {
             params: {
                 action: "rechercheSousEspace",
                 id: id_sous_espace
@@ -81,7 +81,7 @@ myApp.controller('sousEspaceCtrl', ['$scope', '$http', function($scope, $http) {
         console.log("Modification");
         console.log($scope.sousEspace.id);
 
-        $http.put('../controleur-frontal-services.php', {
+        $http.put('controleur-frontal-services.php', {
             action: 'modificationSousEspace',
             id: $scope.sousEspace.id,
             sousEspace: $scope.sousEspace
@@ -99,7 +99,7 @@ myApp.controller('sousEspaceCtrl', ['$scope', '$http', function($scope, $http) {
         console.log(id_espace);
         //deselectionnerSousEspace();
 
-        $http.get('../controleur-frontal-services.php', {
+        $http.get('controleur-frontal-services.php', {
             params: {
                 action: "rechercheSousEspaceParEspace",
                 id: id_espace
