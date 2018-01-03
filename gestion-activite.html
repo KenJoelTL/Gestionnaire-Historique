@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>Gestionnaire historique</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+        <div class="container" ng-controller="activiteCtrl">
+            <h1>Gestion des Activit&eacute;s</h1>
+            <div class="col-lg-2">
+               <button class="btn btn-primary" ng-click="afficherActivites()">Lister toutes les activites</button>
+            </div>
+            <div class="col-lg-5">
+               <input type="number" class="" placeholder="Recherche par sous-espace..." ng-model="sousEspace.id">
+               <button class="btn btn-default" ng-click="chercherActiviteParSousEspace(sousEspace.id)"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+            <table class="table">
+               <tr>
+                  <th>Id</th>
+                  <th>Titre</th>
+                  <th>Url</th>
+                  <th>Id du sous-espace de travail</th>
+                  <th>Action</th>
+                  <th>&nbsp;</th>
+               </tr>
+
+               <tr>
+                  <th>---&nbsp;---</th>
+                  <td><input type="text" class="form-control" ng-model="activite.titre"></td>
+                  <td><input type="text" class="form-control" ng-model="activite.url"></td>
+                  <td><input type="number" class="form-control" ng-model="activite.idSousEspace"></td>
+                  <td><button class="btn btn-success" ng-click="ajouterActivite()">Ajouter</button></td>
+                  <td><button class="btn btn-primary" ng-click="modifierActivite()">Modifier</button></td>
+               </tr>
+
+               <tr ng-repeat="activite in activites">
+                  <td>{{activite.id}}</td>
+                  <td><a href="{{activite.url}}" target="blank">{{activite.titre}}</a></td>
+                  <td><a href="{{activite.url}}">{{activite.url}}</a></td>
+                  <td>{{activite.idSousEspace}}</td><!-- -->
+                  <td><button class="btn btn-danger" ng-click="supprimerActivite(activite.id)">Supprimer</button></td>
+                  <td><button class="btn btn-warning" ng-click="chercherActivite(activite.id)">Choisir</button></td>
+               </tr>
+            </table>
+
+
+        </div>
+
+        <!-- =============== Scripts =============== -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+        <script src="./scripts/myApp.mdl.js"></script>
+        <script src="./scripts/activite.ctrl.js"></script>
+    </body>
+</html>

@@ -43,12 +43,12 @@ class ModifierEspace implements Action , RequestAware {
                         $resultatJSON = '{"error" : "Erreur : Un compte n\'existe pas"}';
                     }else{
                         $espaceDao->update($espace);
-                        $resultatJSON = '{"succes" : "Modification réussie !"}';
+                        $resultatJSON = '{"success" : "Modification réussie !"}';
                     }
                 }
                 else{
                     $espaceDao->update($espace);
-                    $resultatJSON = '{"succes" : "Modification réussie !"}';
+                    $resultatJSON = '{"success" : "Modification réussie !"}';
                 }
             }
             else { //attribut error sera créer dans la réponse (l'objet response)

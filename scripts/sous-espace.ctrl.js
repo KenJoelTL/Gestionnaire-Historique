@@ -38,7 +38,8 @@ myApp.controller('sousEspaceCtrl', ['$scope', '$http', function($scope, $http) {
         $http.post('controleur-frontal-services.php', {
             action: "ajoutSousEspace",
             sousEspace: $scope.sousEspace
-        }).then(function(response) {
+        }).
+        then(function(response) {
             console.log(response.data); //sous-espace ajouté à la bd
             rafraichir();
         });

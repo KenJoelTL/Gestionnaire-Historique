@@ -4,55 +4,55 @@ namespace action;
 require_once('/controller/Action.interface.php');
 require_once('/controller/RequestAware.interface.php');
 require_once('/model/DAO/Connexion.class.php');
-require_once('/model/DAO/EspaceDAO.class.php');
+require_once('/model/DAO/ActiviteDAO.class.php');
 require_once('/model/DAO/SousEspaceDAO.class.php');
-require_once('/model/Espace.class.php');
+require_once('/model/Activite.class.php');
 require_once('/model/SousEspace.class.php');
 
-use model\Espace;
+use model\Activite;
 use model\SousEspace;
 use model\dao\Connexion;
-use model\dao\EspaceDAO;
+use model\dao\ActiviteDAO;
 use model\dao\SousEspaceDAO;
 /**
- * Description of ModifierSousEspace
+ * Description of ModifierActivite
  *
  * @author Joel
  */
-class ModifierSousEspace implements Action , RequestAware {
+class ModifierActivite implements Action , RequestAware {
 
     private $request;
 
     public function execute() {
 
-        if(isset($this->request->id) && isset($this->request->sousEspace)){
+        if(isset($this->request->id) && isset($this->request->activite)){
             $connexion = Connexion::getInstance();
-            $espaceDao = new EspaceDAO();
+            $activiteDao = new ActiviteDAO();
             $sousEspaceDao = new SousEspaceDAO();
-            $espaceDao->setCnx($connexion);
+            $activiteDao->setCnx($connexion);
             $sousEspaceDao->setCnx($connexion);
 
-            $sousEspace = new SousEspace();
-            $sousEspace->loadFromJsonObject($this->request->sousEspace);
-            $sousEspaceOriginal = $sousEspaceDao->find($this->request->id);
+            $activite = new Activite();
+            $activite->loadFromJsonObject($this->request->activite);
+            $activiteOriginal = $activiteDao->find($this->request->id);
 
-            if($sousEspaceOriginal != null){
-                if($sousEspaceOriginal->getIdEspace() != $sousEspace->getIdEspace()){
-                    $espaceNouveau = $espaceDao->find($sousEspace->getIdEspace());
-                    if($espaceNouveau == null){
-                        $resultatJSON = '{"error" : "Erreur : Cet espace n\'existe pas"}';
+            if($activiteOriginal != null){
+                if($activiteOriginal->getIdSousEspace() != $activite->getIdSousEspace()){
+                    $sousEspaceNouveau = $sousEspaceDao->find($activite->getIdSousEspace());
+                    if($sousEspaceNouveau == null){
+                        $resultatJSON = '{"error" : "Erreur : Ce sous-espace n\'existe pas"}';
                     }else{
-                        $sousEspaceDao->update($sousEspace);
+                        $activiteDao->update($activite);
                         $resultatJSON = '{"success" : "Modification réussie !"}';
                     }
                 }
                 else{
-                    $sousEspaceDao->update($sousEspace);
+                    $activiteDao->update($activite);
                     $resultatJSON = '{"success" : "Modification réussie !"}';
                 }
             }
             else { //attribut error sera créer dans la réponse (l'objet response)
-                $resultatJSON = '{"error" : "Erreur : Ce sous-espace n\'existe pas"}';
+                $resultatJSON = '{"error" : "Erreur : Cette activité n\'existe pas"}';
             }
 
             Connexion::close();

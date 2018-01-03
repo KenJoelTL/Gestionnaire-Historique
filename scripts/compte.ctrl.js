@@ -31,7 +31,7 @@ myApp.controller('compteCtrl', ['$scope', '$http', function($scope, $http) {
     };*/
 
 
-    //fonction pour reinitialiser le contact sélectionné
+    //fonction pour reinitialiser le compte sélectionné
     $scope.deselectionnerContact = function() {
         $scope.compte = null;
     };
@@ -46,20 +46,20 @@ myApp.controller('compteCtrl', ['$scope', '$http', function($scope, $http) {
 
     rafraichir(); // la fonction sera appelée lors du démmarage de l'app
 
-    //fonction pour ajouter un contact à la base de données
+    //fonction pour ajouter un compte à la base de données
     $scope.ajouterCompte = function() {
-        console.log($scope.compte); //contact à ajouter à la bd
+        console.log($scope.compte); //compte à ajouter à la bd
         $http.post('../controleur-frontal-services.php', {
             action: "ajoutCompte",
             compte: $scope.compte
         }).then(function(response) {
-            console.log(response.data); //contact ajouté à la bd
+            console.log(response.data); //compte ajouté à la bd
             //$scope.afficherComptes();
             rafraichir();
         });
     };
 
-    //fonction pour supprimer un contact de la bd
+    //fonction pour supprimer un compte de la bd
     $scope.supprimerCompte = function(id_compte) {
         $http.post('../controleur-frontal-services.php', {
             action: "suppressionCompte",
@@ -73,7 +73,7 @@ myApp.controller('compteCtrl', ['$scope', '$http', function($scope, $http) {
         });
     };
 
-    //fonction pour chercher un contact de la bd et le selectionner(mettre dans le formulaire)
+    //fonction pour chercher un compte de la bd et le selectionner(mettre dans le formulaire)
     $scope.chercherCompte = function(id_compte) {
         console.log(id_compte);
         deselectionnerContact();
@@ -90,7 +90,7 @@ myApp.controller('compteCtrl', ['$scope', '$http', function($scope, $http) {
         });
     };
 
-    //fonction pour modifier le contact sélectionné (dans le formulaire)
+    //fonction pour modifier le compte sélectionné (dans le formulaire)
     $scope.modifierCompte = function() {
         console.log("Modification");
         console.log($scope.compte.id);

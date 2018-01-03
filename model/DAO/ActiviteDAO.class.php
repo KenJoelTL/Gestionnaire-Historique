@@ -16,13 +16,15 @@ class ActiviteDAO extends DAO {
 
     public function create($activite) {
         try{
-            $request = "INSERT INTO activite (TITRE, ID_SOUS_ESPACE) values (:titre, :idSousEspace)";
+            $request = "INSERT INTO activite (TITRE, URL, ID_SOUS_ESPACE) values (:titre, :url, :idSousEspace)";
             $pstmt = $this->cnx->prepare($request);
 
             $titre = $activite->getTitre();
+            $url = $activite->getUrl();
             $idSousEspace = $activite->getIdSousEspace();
 
             $pstmt->bindParam(":titre", $titre);
+            $pstmt->bindParam(":url", $url);
             $pstmt->bindParam(":idSousEspace", $idSousEspace);
 
             return $pstmt->execute();
@@ -35,15 +37,17 @@ class ActiviteDAO extends DAO {
 
     public function update($activite) {
         try{
-            $request = "UPDATE activite SET TITRE = :titre, ID_SOUS_ESPACE = :idSousEspace WHERE ID = :id";
+            $request = "UPDATE activite SET TITRE = :titre, URL = :url, ID_SOUS_ESPACE = :idSousEspace WHERE ID = :id";
 
             $pstmt = $this->cnx->prepare($request);
 
             $titre = $activite->getTitre();
+            $url = $activite->getUrl();
             $idSousEspace = $activite->getIdSousEspace();
             $id = $activite->getId();
 
             $pstmt->bindParam(':titre', $titre);
+            $pstmt->bindParam(':url', $url);
             $pstmt->bindParam(':idSousEspace', $idSousEspace);
             $pstmt->bindParam(':id', $id);
 
@@ -101,7 +105,6 @@ class ActiviteDAO extends DAO {
 
     //Fonction qui retourne la liste des activite d'un utilisateur à l'aide de son $idSousEspace
     public function findByIdSousEspace($idSousEspace) {
-
         $liste = new Liste();
         $request = "SELECT * FROM activite WHERE ID_SOUS_ESPACE = :x";
         try {
@@ -110,17 +113,10 @@ class ActiviteDAO extends DAO {
 
             while ($resultat = $pstmt->fetch(PDO::FETCH_OBJ)){
                 $activite = new Activite();
-				$activite->loadFromObject($resultat);
+                $activite->loadFromObject($resultat);
                 $liste->add($activite);
-		    }
-/*
-            foreach($pstmt as $ligne) {
-                $activite = new Activite();
-                $activite->loadFromArray($ligne);
-                $liste->add($activite);
-            }*/
-
-            //$resultat->closeCursor();
+            }
+            
             $pstmt->closeCursor();
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";

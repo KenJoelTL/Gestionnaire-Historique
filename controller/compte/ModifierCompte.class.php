@@ -37,12 +37,12 @@ class ModifierCompte implements Action , RequestAware {
                         $resultatJSON = '{"error" : "Erreur : Un compte avec ce courriel existe déjà"}';
                     }else{
                         $compteDao->update($compte);
-                        $resultatJSON = '{"succes" : "Modification réussie !"}';
+                        $resultatJSON = '{"success" : "Modification réussie !"}';
                     }
                 }
                 else{
                     $compteDao->update($compte);
-                    $resultatJSON = '{"succes" : "Modification réussie !"}';
+                    $resultatJSON = '{"success" : "Modification réussie !"}';
                 }
             }
             else { //attribut error sera créer dans la réponse (l'objet response)
