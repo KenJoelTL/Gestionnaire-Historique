@@ -9,16 +9,16 @@
     </head>
     <body ng-controller="espaceCtrl">
         <div class="container-fluid" ng-controller="sousEspaceCtrl">
-            <h1>Historique</h1>
+            <h1>Gestionnaire d'activit&eacute;s</h1>
 
             <div class="col-lg-2">
-               <ul class="nav nav-pills nav-stacked" ng-repeat="espace in $parent.espaces">
-                  <li><a href="#" ng-click="chercherSousEspaceParEspace(espace.id)">{{espace.titre}}</a></li>
+               <ul class="nav nav-pills nav-stacked list-group" ng-repeat="espace in $parent.espaces">
+                  <li style="box-shadow: 1px 1px 4px 1px #033263a6"><a href="#" ng-click="chercherSousEspaceParEspace(espace.id)">{{espace.titre}}</a></li>
                </ul>
             </div>
 
             <div class="col-lg-8">
-               <button class="btn btn-primary">bla</button>
+               <button class="btn btn-primary" ng-click="afficherSousEspaces()">Afficher tous les sous-espaces</button>
                <table class="table">
                   <tr>
                      <th>Id</th>
@@ -34,15 +34,24 @@
                      <td><button class="btn btn-success" ng-click="ajouterSousEspace()">Ajouter</button>
                      <button class="btn btn-primary" ng-click="modifierSousEspace()">Modifier</button></td>
                   </tr>
+               </table>
 
-                  <tr ng-repeat="sousEspace in sousEspaces">
-                     <td>{{sousEspace.id}}</td>
-                     <td>{{sousEspace.titre}}</td>
-                     <td>{{sousEspace.idEspace}}</td>
-                     <td><button class="btn btn-danger" ng-click="supprimerSousEspace(sousEspace.id)">Supprimer</button>
+               <div class="col-lg-6" ng-repeat="sousEspace in sousEspaces">
+                  <div class="panel panel-primary">
+                     <div class="panel-heading">{{sousEspace.titre}}</div>
+                     <div class="panel-body"></div>
+                  </div>
+               </div>
+               <!--
+               <tr >
+                  div.panel.panel-primary
+                  <td>{{sousEspace.id}}</td>
+                  <td>{{sousEspace.titre}}</td>
+                  <td>{{sousEspace.idEspace}}</td>
+                  <td><button class="btn btn-danger" ng-click="supprimerSousEspace(sousEspace.id)">Supprimer</button>
                      <button class="btn btn-warning" ng-click="chercherSousEspace(sousEspace.id)">Selectionner</button></td>
                   </tr>
-               </table>
+               -->
             </div>
 
         </div>
