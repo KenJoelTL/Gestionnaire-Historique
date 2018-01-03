@@ -23,6 +23,14 @@ require_once("/controller/sous-espace/SupprimerSousEspace.class.php");
 require_once("/controller/sous-espace/ModifierSousEspace.class.php");
 require_once("/controller/sous-espace/ObtenirSousEspaceParEspace.class.php");
 
+//Les services d' Activite
+require_once("/controller/activite/AjouterActivite.class.php");
+require_once("/controller/activite/ObtenirListeActivite.class.php");
+require_once("/controller/activite/ObtenirActivite.class.php");
+require_once("/controller/activite/SupprimerActivite.class.php");
+require_once("/controller/activite/ModifierActivite.class.php");
+require_once("/controller/activite/ObtenirActiviteParSousEspace.class.php");
+
 
 /**
  * Description of ActionBuilder
@@ -87,6 +95,26 @@ class ActionBuilder {
                 break;
             case "rechercheSousEspaceParEspace" :
                 return new ObtenirSousEspaceParEspace();
+                break;
+
+        //Activite
+            case "ajoutActivite" :
+                return new AjouterActivite();
+                break;
+            case "listeActivite" :
+                return new ObtenirListeActivite();
+                break;
+            case "suppressionActivite" :
+                return new SupprimerActivite();
+                break;
+            case "rechercheActivite" :
+                return new ObtenirActivite();
+                break;
+            case "modificationActivite" :
+                return new ModifierActivite();
+                break;
+            case "rechercheActiviteParSousEspace":
+                return new ObtenirActiviteParSousEspace();
                 break;
 
             default :

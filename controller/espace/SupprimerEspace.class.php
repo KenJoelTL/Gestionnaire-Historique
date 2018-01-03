@@ -25,7 +25,7 @@ class SupprimerEspace implements Action, RequestAware {
         $espaceDao->setCnx($connexion);
         $espace = $espaceDao->find($this->request->id);
         if($espace != null){
-            $resultatJSON = '{"succes" : "Succès !"}';
+            $resultatJSON = '{"success" : "Succès !"}';
             $espaceDao->delete($espace->getId());
         }
         else { //attribut error sera créer dans la réponse (l'objet response)

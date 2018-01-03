@@ -38,7 +38,7 @@ class AjouterEspace implements Action , RequestAware {
             $espaceVerification = $espaceDao->find($espace->getId());
 
             if($compteVerification != null) {
-                $resultatJSON = '{"succes" : "Ajout réussie !"}';
+                $resultatJSON = '{"success" : "Ajout réussie !"}';
                 $espaceDao->create($espace);
             }
             else { //attribut error sera créer dans la réponse (l'objet response)

@@ -10,7 +10,7 @@ use model\dao\Connexion;
 use model\dao\SousEspaceDAO;
 use model\SousEspace;
 /**
- * Description of supprimerSousEspace
+ * Description of SupprimerSousEspace
  * service qui permet de supprimer un sous-espace
  * @author Joel
  */
@@ -25,7 +25,7 @@ class SupprimerSousEspace implements Action, RequestAware {
         $sousEspaceDao->setCnx($connexion);
         $sousEspace = $sousEspaceDao->find($this->request->id);
         if($sousEspace != null){
-            $resultatJSON = '{"succes" : "Succès !"}';
+            $resultatJSON = '{"success" : "Succès !"}';
             $sousEspaceDao->delete($sousEspace->getId());
         }
         else { //attribut error sera créer dans la réponse (l'objet response)

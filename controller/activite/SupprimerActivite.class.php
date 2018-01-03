@@ -4,32 +4,32 @@ namespace action;
 require_once('/controller/Action.interface.php');
 require_once('/controller/RequestAware.interface.php');
 require_once('/model/DAO/Connexion.class.php');
-require_once('/model/DAO/CompteDAO.class.php');
-require_once('/model/Compte.class.php');
+require_once('/model/DAO/ActiviteDAO.class.php');
+require_once('/model/Activite.class.php');
 use model\dao\Connexion;
-use model\dao\CompteDAO;
-use model\Compte;
+use model\dao\ActiviteDAO;
+use model\Activite;
 /**
- * Description of SupprimerCompte
- * service qui permet de supprimer un compte
+ * Description of SupprimerActivite
+ * service qui permet de supprimer une activité
  * @author Joel
  */
-class SupprimerCompte implements Action, RequestAware {
+class SupprimerActivite implements Action, RequestAware {
 
     private $request;
 
     public function execute() {
 
         $connexion = Connexion::getInstance();
-        $compteDao = new CompteDAO();
-        $compteDao->setCnx($connexion);
-        $compte = $compteDao->find($this->request->id);
-        if($compte != null){
+        $activiteDao = new ActiviteDAO();
+        $activiteDao->setCnx($connexion);
+        $activite = $activiteDao->find($this->request->id);
+        if($activite != null){
             $resultatJSON = '{"success" : "Succès !"}';
-            $compteDao->delete($compte->getId());
+            $activiteDao->delete($activite->getId());
         }
         else { //attribut error sera créer dans la réponse (l'objet response)
-            $resultatJSON = '{"error" : "Erreur : Le compte n\'existe pas"}';
+            $resultatJSON = '{"error" : "Erreur : L\'activité n\'existe pas"}';
         }
         Connexion::close();
 

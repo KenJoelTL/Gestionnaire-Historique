@@ -31,7 +31,7 @@ class AjouterCompte implements Action , RequestAware {
             $compteVerification = $compteDao->findByCourriel($compte->getCourriel());
 
             if($compteVerification == null){
-                $resultatJSON = '{"succes" : "Ajout réussie !"}';
+                $resultatJSON = '{"success" : "Ajout réussie !"}';
                 $compteDao->create($compte);
             }
             else { //attribut error sera créer dans la réponse (l'objet response)
