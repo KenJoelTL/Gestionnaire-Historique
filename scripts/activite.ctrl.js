@@ -32,6 +32,8 @@ myApp.controller('activiteCtrl', ['$scope', '$http', function($scope, $http) {
 
     rafraichir(); // la fonction sera appelée lors du démmarrage de l'app
 
+
+
     //fonction pour ajouter une activité à la base de données
     $scope.ajouterActivite = function() {
         console.log($scope.activite); // activité à ajouter à la bd
@@ -98,7 +100,7 @@ myApp.controller('activiteCtrl', ['$scope', '$http', function($scope, $http) {
     };
 
 
-    //fonction pour chercher une liste des sous-espaces d'une activité donnée
+    //fonction pour chercher une liste des activités d'un sous-espace donnée
     $scope.chercherActiviteParSousEspace = function(id_sous_espace) {
         console.log(id_sous_espace);
         //deselectionnerSousEspace();
@@ -115,8 +117,23 @@ myApp.controller('activiteCtrl', ['$scope', '$http', function($scope, $http) {
         });
     };
 
+    //doit être remplasser par un service
+    //fonction pour chercher une liste des activités d'un sous-espace donnée
+    $scope.getActiviteParSousEspace = function(id_sous_espace) {
+        //console.log(id_sous_espace);
+        //deselectionnerSousEspace();
 
-
+        $http.get('controleur-frontal-services.php', {
+            params: {
+                action: "rechercheActiviteParSousEspace",
+                id: id_sous_espace
+            }
+        }).
+        then(function(response) {
+            console.log(reponse.data);
+            return response.data;
+        });
+    };
 
 
 }]);

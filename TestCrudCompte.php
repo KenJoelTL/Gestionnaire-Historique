@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 <?php 
 require_once('./model/DAO/Connexion.class.php');
-include_once('/model/DAO/CompteDAO.class.php'); 
-include_once('/model/Compte.class.php'); 
+include_once('/model/DAO/CompteDAO.class.php');
+include_once('/model/Compte.class.php');
 include_once('/model/Liste.class.php');
 
 use model\dao\Connexion;
@@ -11,6 +10,7 @@ use model\Liste;
 use model\Compte;
 
 ?>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -18,13 +18,13 @@ use model\Compte;
     </head>
     <body>
         <?php
-        
+
         $cnx = Connexion::getInstance();
         $compteDao = new CompteDAO();
         $compteDao->setCnx($cnx);
-        
+
         $liste = $compteDao->findAll();
-        
+
         echo "Affichage des comptes :<br/>";
 
         while($liste->next()){
@@ -52,12 +52,12 @@ use model\Compte;
         }
 
         echo"<br/>";
-        
-        
+
+
         echo "Affichage du compte 1 :<br/>";
         $compte = $compteDao->find(1);
         echo $compte->getCourriel()."<br/>";
-   
+
         echo "<br/>";
 
         echo "Affichage du compte joel@mail.com :<br/>";
@@ -69,7 +69,7 @@ use model\Compte;
         }
 
         echo "<br/>";
-        
+
         echo "Modification du compte joel@mail.com par eric@mail.com :<br/>";
         $compte->setCourriel('eric@mail.com');
         $compteDao->update($compte);
@@ -86,26 +86,26 @@ use model\Compte;
         }
 
         echo"<br/>";
-        
-        
+
+
         echo "Suppression du compte eric@mail.com :<br/>";
         echo "Suppression ".(($compteDao->delete($compte->getId()))? "Réussie" : "Échouée");
         echo "<br/>";
-   
-        echo "<br/>";        
+
+        echo "<br/>";
 
         echo "Réinitialisation de la liste...<br/>";
         $liste->reset();
         $liste = $compteDao->findAll();
 
-        echo"<br/>";        
-        
-        
+        echo"<br/>";
+
+
         echo "Affichage des comptes :<br/>";
         while($liste->next()){
             echo $liste->current()->getCourriel()."<br/>";
         }
-        
+
         Connexion::close();
         ?>
     </body>

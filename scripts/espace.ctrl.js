@@ -93,5 +93,21 @@ myApp.controller('espaceCtrl', ['$scope', '$http', function($scope, $http) {
 
     };
 
+    //fonction pour chercher une liste des espaces d'un compte donné
+    $scope.chercherEspaceParCompte = function(id_compte) {
+        console.log(id_compte);
+        //deselectionnerCompte();
+
+        $http.get('controleur-frontal-services.php', {
+            params: {
+                action: "rechercheEspaceParCompte",
+                id: id_compte
+            }
+        }).
+        then(function(response) {
+            $scope.espaces = response.data;
+            console.log(response.data);
+        });
+    };
 
 }]);
