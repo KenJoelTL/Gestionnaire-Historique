@@ -1,9 +1,4 @@
 <?php
-if(!isset($_SESSION['connecte'])){
-  header('Location: ./login.php');
-  exit();
-}
-
 require_once('./model/DAO/Connexion.class.php');
 require_once('./model/DAO/ActiviteDAO.class.php');
 require_once('./model/Activite.class.php');
@@ -55,9 +50,7 @@ use model\Liste;
 
                <div class="col-lg-6" ng-repeat="sousEspace in sousEspaces">
                   <div class="panel panel-primary">
-                     <div class="panel-heading">{{sousEspace.titre}}
-                         <button type="button" class="bactivite pull-right" name="button" class="pull-right" onclick="ouvrir('activiteLink2')"><span class="glyphicon glyphicon-plus" style="color:green"></span></button>
-                       </div>
+                     <div class="panel-heading">{{sousEspace.titre}}</div>
                      <div class="panel-body">
                         <?php
                               $cnx = Connexion::getInstance();
@@ -68,7 +61,7 @@ use model\Liste;
                          ?>
                         <ul class="list-group" ng-repeat="activite in activites" ng-if="activite.idSousEspace == sousEspace.id">
                            <li class="list-group-item">
-                              <a href="{{activite.url}}" class="activiteLink{{sousEspace.id}}" target="_blank">{{activite.titre}}</a>
+                              <a href="{{activite.url}}" class="activiteLink" target="blank">{{activite.titre}}</a>
                            </li>
                         </ul>
 
@@ -94,8 +87,7 @@ use model\Liste;
         <script src="scripts/compte.ctrl.js"></script>
         <script src="scripts/espace.ctrl.js"></script>
         <script src="scripts/sous-espace.ctrl.js"></script>
-        <script src="scripts/script.js"></script>
-        <script src="scripts/activite.srv.js"></script>
+        <!-- <script src="scripts/activite.srv.js"></script> -->
         <script src="scripts/activite.ctrl.js"></script>
     </body>
 </html>

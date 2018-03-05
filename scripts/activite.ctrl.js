@@ -1,9 +1,11 @@
 //Définition d'un controleur pour le module myApp
-myApp.controller('activiteCtrl', ['$scope', '$http', function($scope, $http) {
+myApp.controller('activiteCtrl', ['$scope', '$http',/*'activiteSrv',*/function($scope, $http/*, activiteSrv*/) {
     console.log("Coucou du controleur Activité!");
 
     $scope.afficherActivites = function() {
         console.log("fonction pour afficher les activités");
+            //$scope.error = response.data.error;
+        //$scope.activites = activiteSrv.getAllActivite();
         $http.get('controleur-frontal-services.php', {
             params: {
                 action: "listeActivite"
@@ -11,9 +13,9 @@ myApp.controller('activiteCtrl', ['$scope', '$http', function($scope, $http) {
         }).
         then(function(response) {
             console.log(response.data);
-            //$scope.error = response.data.error;
             $scope.activites = response.data;
         });
+
     };
 
 
@@ -130,7 +132,7 @@ myApp.controller('activiteCtrl', ['$scope', '$http', function($scope, $http) {
             }
         }).
         then(function(response) {
-            console.log(reponse.data);
+            console.log(response.data);
             return response.data;
         });
     };
