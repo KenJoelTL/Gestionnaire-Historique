@@ -103,7 +103,7 @@ class ActiviteDAO extends DAO {
         return $liste;
     }
 
-    //Fonction qui retourne la liste des activite d'un utilisateur à l'aide de son $idSousEspace
+    //Fonction qui retourne la liste des activites d'un utilisateur à l'aide de son $idSousEspace
     public function findByIdSousEspace($idSousEspace) {
         $liste = new Liste();
         $request = "SELECT * FROM activite WHERE ID_SOUS_ESPACE = :x";

@@ -78,7 +78,7 @@ myApp.controller('compteCtrl', ['$scope', '$http', function($scope, $http) {
         console.log(id_compte);
         deselectionnerContact();
 
-        $http.get('../controleur-frontal-services.php', {
+        $http.get('controleur-frontal-services.php', {
             params: {
                 action: "rechercheCompte",
                 id: id_compte
@@ -95,7 +95,7 @@ myApp.controller('compteCtrl', ['$scope', '$http', function($scope, $http) {
         console.log("Modification");
         console.log($scope.compte.id);
 
-        $http.put('../controleur-frontal-services.php', {
+        $http.put('controleur-frontal-services.php', {
             action: 'modificationCompte',
             id: $scope.compte.id,
             compte: $scope.compte
@@ -106,6 +106,19 @@ myApp.controller('compteCtrl', ['$scope', '$http', function($scope, $http) {
         });
 
     };
+
+
+    //fonction pour se connecter
+    $scope.connexion = function(){
+        console.log("test : "+$scope.courriel);
+        $http.post('controleur-frontal-services.php', {
+            action: 'connexionCompte',
+            compte : $scope.compte
+        }).
+        then(function(response) {
+            console.log(response.data);
+        });
+    }
 
 
 }]);
