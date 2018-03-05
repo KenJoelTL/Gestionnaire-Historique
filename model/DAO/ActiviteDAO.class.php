@@ -116,7 +116,7 @@ class ActiviteDAO extends DAO {
                 $activite->loadFromObject($resultat);
                 $liste->add($activite);
             }
-            
+
             $pstmt->closeCursor();
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
@@ -141,6 +141,26 @@ class ActiviteDAO extends DAO {
         return $c;
     }
 */
+    public function findByIdEspace($idEspace) {
+        $liste = new Liste();
+        $request = "SELECT * FROM activite WHERE ID_SOUS_ESPACE in ".
+                "(". "SELECT * FROM sous_espace WHERE ID_ESPACE = :x". ")";
+        try {
+            $pstmt = $this->cnx->prepare($request);//requête paramétrée par un paramètre x.
+            $pstmt->execute(array(':x' => $idEspace));
 
+            while ($resultat = $pstmt->fetch(PDO::FETCH_OBJ)){
+                $activite = new Activite();
+                $activite->loadFromObject($resultat);
+                $liste->add($activite);
+            }
+
+            $pstmt->closeCursor();
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+        }
+        return $liste;
+
+    }
 
 }
