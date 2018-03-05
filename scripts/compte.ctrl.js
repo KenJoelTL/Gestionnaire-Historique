@@ -110,6 +110,7 @@ myApp.controller('compteCtrl', ['$scope', '$http', function($scope, $http) {
 
     //fonction pour se connecter
     $scope.connexion = function(){
+        console.log("test : "+$scope.courriel);
         $http.post('controleur-frontal-services.php', {
             action: 'connexionCompte',
             compte : $scope.compte

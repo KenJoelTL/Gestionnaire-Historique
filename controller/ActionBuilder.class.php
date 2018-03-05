@@ -7,6 +7,7 @@ require_once("/controller/compte/ObtenirListeCompte.class.php");
 require_once("/controller/compte/ObtenirCompte.class.php");
 require_once("/controller/compte/SupprimerCompte.class.php");
 require_once("/controller/compte/ModifierCompte.class.php");
+require_once("/controller/compte/ConnecterCompte.class.php");
 
 //Les services d' Espace de travail
 require_once("/controller/espace/AjouterEspace.class.php");
@@ -59,6 +60,9 @@ class ActionBuilder {
                 break;
             case "modificationCompte" :
                 return new ModifierCompte();
+                break;
+            case "connexionCompte" :
+                return new ConnecterCompte();
                 break;
 
         // Espace

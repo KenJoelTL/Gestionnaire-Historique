@@ -1,4 +1,13 @@
 <?php
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
+if(isset($_SESSION['connecte'])){
+  header('Location: ./index.php');
+  exit();
+}
 require_once('./model/DAO/Connexion.class.php');
 require_once('./model/DAO/ActiviteDAO.class.php');
 require_once('./model/Activite.class.php');
@@ -19,23 +28,23 @@ use model\Liste;
         <link rel="stylesheet" href="./lib/bootstrap-3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="./lib/bootstrap-3.3.7/css/bootstrap-theme.min.css">
     </head>
-    <body ng-controller="espaceCtrl">
+    <body>
 
         <div class="container" ng-controller="compteCtrl">
             <div class="panel panel-primary col-lg-6 col-lg-offset-3 ">
                 <div class="panel panel-body">
-                    <form class="form-account" method="POST">
+                    <form class="form-account" method="POST" ng-submit="connexion()">
                         <h1>Page de connexion</h1>
                         <div class="form-group col-lg-12">
-                            <label for="email">Courriel</label>
-                            <input type="email" class="form-control" id="email" placeholder="Entrez votre courriel" name="email">
+                            <label for="courriel">Courriel</label>
+                            <input type="email" class="form-control" id="courriel" ng-model="compte.courriel" placeholder="Entrez votre courriel" name="courriel">
                         </div>
                         <div class="form-group col-lg-12">
-                            <label for="password">Mot de passe</label>
-                            <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" name="password">
+                            <label for="motPasse">Mot de passe</label>
+                            <input type="password" class="form-control" id="motPasse" ng-model="compte.motPasse" placeholder="Entrez votre mot de passe" name="motPasse">
                         </div>
                         <div class="form-group col-lg-12">
-                            <button type="submit" class="btn btn-primary">Se connecter</button>
+                            <button class="btn btn-primary">Se connecter</button>
                             <a href='account/create' class="btn btn-success">S'incrire</a>
                         </div>
                     </form>

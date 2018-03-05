@@ -21,19 +21,20 @@ class ConnecterCompte implements Action , RequestAware {
 
     public function execute() {
         $resultatJSON = "{}";
-        if(isset($this->request['courriel']) && isset($this->request['motPasse'])){
+        if(isset($this->request->compte->courriel) && isset($this->request->compte->motPasse)){
             $connexion = Connexion::getInstance();
             $compteDao = new CompteDAO();
             $compteDao->setCnx($connexion);
 
-            $compte = $compteDao->findByCourriel($this->request['courriel']);
+            $compte = $compteDao->findByCourriel($this->request->compte->courriel);
 
             if($compte != null){
 
-                if($compte.getMotPasse() === $this->request['motPasse']){
+                if($compte->getMotPasse() === $this->request->compte->motPasse){
                     session_start();
-                    $_SESSION['connecte'] = $compte.getId();
+                    $_SESSION['connecte'] = $compte->getId();
                     //$resultatJSON = $compte->toJson();
+                    $resultatJSON = '{"Resutat" : "Succès" }';
                 }
                 else{
                     $resultatJSON = '{"error" : "Erreur : ce compte n\'existe pas"}';

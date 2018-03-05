@@ -9,10 +9,10 @@ use action\ActionBuilder;
 use action\RequestAware;
 
 if(isset($request->action) || isset($_GET["action"])){
-    if(isset($request->action)){
+    if(isset($request->action)){ // POST | GET | DELETE REQUEST
         $nomAction = $request->action;
     }
-    elseif (isset($_GET["action"])) {
+    elseif (isset($_GET["action"])) { // GET REQUEST
         $nomAction = $_GET["action"];
         $request = $_GET;
     }
