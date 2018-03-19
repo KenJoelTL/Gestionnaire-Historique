@@ -1,4 +1,5 @@
 <?php
+////
 require_once('./model/DAO/Connexion.class.php');
 require_once('./model/DAO/ActiviteDAO.class.php');
 require_once('./model/Activite.class.php');
